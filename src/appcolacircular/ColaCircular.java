@@ -72,22 +72,49 @@ public class ColaCircular
 
     public boolean estaLlena()
     {
-        int resul = (ultimo + 1) % max;//Matematicamnete hablando q significa esto XD
+        //Que pasa en la operacion (ultimo + 1) % max
+        /*
+            
+         */
+        int resul = (ultimo + 1) % max;
         return resul == primero;
         //return ultimo >= cola.length - 1;
     }
 
     public void mostrar()
     {
+        //Como imprimir la cola con 
+        // (P)rimero y (U)ltimo
+        // no se debe afectar P y U
         System.out.println("\33[31mDatos en la cola");
         for (int i = 0; i < cola.length; i++)
         {
             System.out.print("\33[34m [" + cola[i] + "] ");
         }
     }
-    //Implementar la aplicacion para probar la clase cola circular
-    /*
-        Prueba de escritorio de la cola circular y el metodo
-        estaLlena, subirla el lunes a la 17:00;
-     */
+
+    public boolean eliminar(int[] dato)
+    {
+        if (primero == -1)
+        {
+            return false;
+        }
+
+        dato[0] = cola[primero];
+        if (primero == ultimo)
+        {
+            cola[primero] = -1;//checamos si este va aqui
+            primero = ultimo = -1;
+        } else if (primero == max - 1)
+        {
+            cola[primero] = -1;//o aca :3
+            primero = 0;
+        } else
+        {
+            cola[primero] = -1;// o aca iwi
+            primero++;
+        }
+
+        return true;
+    }
 }
